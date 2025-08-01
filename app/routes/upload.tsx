@@ -5,7 +5,7 @@ import {usePuterStore} from "~/lib/puter";
 import {useNavigate} from "react-router";
 import {convertPdfToImage} from "~/lib/pdf2img";
 import {generateUUID} from "~/lib/utils";
-import {prepareInstructions} from "../constants/index";
+import {prepareInstructions} from "../../constants";
 
 const Upload = () => {
     const { auth, isLoading, fs, ai, kv } = usePuterStore();
@@ -27,7 +27,10 @@ const Upload = () => {
 
         setStatusText('Converting to image...');
         const imageFile = await convertPdfToImage(file);
-        if(!imageFile.file) return setStatusText('Error: Failed to convert PDF to image');
+        if(!imageFile.file) {
+            const errorMessage = imageFile.error || 'Failed to convert PDF to image';
+            return setStatusText(`Error: ${errorMessage}`);
+        }
 
         setStatusText('Uploading the image...');
         const uploadedImage = await fs.upload([imageFile.file]);
@@ -48,7 +51,7 @@ const Upload = () => {
 
         const feedback = await ai.feedback(
             uploadedFile.path,
-            prepareInstructions({ jobTitle, jobDescription, AIResponseFormat: 'json' }),
+            prepareInstructions({ jobTitle, jobDescription })
         )
         if (!feedback) return setStatusText('Error: Failed to analyze resume');
 
