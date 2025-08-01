@@ -91,6 +91,96 @@ export const resumes: Resume[] = [
             },
         },
     },
+    {
+        id: "4",
+        companyName: "Google",
+        jobTitle: "Frontend Developer",
+        imagePath: "/images/resume_03.png",
+        resumePath: "/resumes/resume-1.pdf",
+        feedback: {
+            overallScore: 85,
+            ATS: {
+                score: 90,
+                tips: [],
+            },
+            toneAndStyle: {
+                score: 90,
+                tips: [],
+            },
+            content: {
+                score: 90,
+                tips: [],
+            },
+            structure: {
+                score: 90,
+                tips: [],
+            },
+            skills: {
+                score: 90,
+                tips: [],
+            },
+        },
+    },
+    {
+        id: "5",
+        companyName: "Microsoft",
+        jobTitle: "Cloud Engineer",
+        imagePath: "/images/resume_01.png",
+        resumePath: "/resumes/resume-2.pdf",
+        feedback: {
+            overallScore: 55,
+            ATS: {
+                score: 90,
+                tips: [],
+            },
+            toneAndStyle: {
+                score: 90,
+                tips: [],
+            },
+            content: {
+                score: 90,
+                tips: [],
+            },
+            structure: {
+                score: 90,
+                tips: [],
+            },
+            skills: {
+                score: 90,
+                tips: [],
+            },
+        },
+    },
+    {
+        id: "6",
+        companyName: "Apple",
+        jobTitle: "iOS Developer",
+        imagePath: "/images/resume_02.png",
+        resumePath: "/resumes/resume-3.pdf",
+        feedback: {
+            overallScore: 75,
+            ATS: {
+                score: 90,
+                tips: [],
+            },
+            toneAndStyle: {
+                score: 90,
+                tips: [],
+            },
+            content: {
+                score: 90,
+                tips: [],
+            },
+            structure: {
+                score: 90,
+                tips: [],
+            },
+            skills: {
+                score: 90,
+                tips: [],
+            },
+        },
+    },
 ];
 
 export const AIResponseFormat = `
@@ -138,10 +228,10 @@ export const AIResponseFormat = `
     }`;
 
 export const prepareInstructions = ({
-                                        jobTitle,
-                                        jobDescription,
-                                        AIResponseFormat,
-                                    }: {
+     jobTitle,
+    jobDescription,
+     AIResponseFormat,
+}: {
     jobTitle: string;
     jobDescription: string;
     AIResponseFormat: string;
@@ -158,4 +248,6 @@ export const prepareInstructions = ({
   Provide the feedback using the following format: ${AIResponseFormat}
   Return the analysis as a JSON object, without any other text and without the backticks.
   Do not include any other text or comments.`;
+
+
 
